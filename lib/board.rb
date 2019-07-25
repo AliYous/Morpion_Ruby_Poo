@@ -1,6 +1,5 @@
 
-require_relative 'board_case'
-
+ 
 class Board
     attr_accessor :board
 
@@ -9,7 +8,6 @@ class Board
         9.times do |i|
             @board << BoardCase.new
         end
-        display_board
     end
 
     #displays the board with its current boradcase's values
@@ -24,7 +22,7 @@ class Board
 end
 
 
-jeu = Board.new
-jeu.board[4].change_value("X")
-system("clear")
-jeu.display_board
+# jeu = Board.new
+# jeu.board[4].change_value("X")
+# system("clear")
+# jeu.display_board

@@ -8,13 +8,12 @@ require 'player.rb'
 
 
 game = Game.new
-player_x = game.player_x
-player_o = game.player_o
+current_player = game.player_x
 
-while game.is_game_over? == false
-    current_player = game.gets_current_player
-    choice = game.player_choice
-    game.apply_player_choice(choice, current_player.symbol )
+while game.is_game_still_going? == true
+    game.player_choice(current_player)
+    game.game_board.display_board
+    current_player = game.switch_player(current_player)
 end
 
-game.end_game #Displays a message that says who won
+ #Displays a message that says who won
