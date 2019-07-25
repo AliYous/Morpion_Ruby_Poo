@@ -1,17 +1,30 @@
 
+require_relative 'board_case'
 
 class Board
+    attr_accessor :board
 
+    def initialize
+        @board = []
+        9.times do |i|
+            @board << BoardCase.new
+        end
+        display_board
+    end
+
+    #displays the board with its current boradcase's values
     def display_board
-        @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
+        puts "#{@board[0].value} | #{@board[1].value} | #{@board[2].value}"
         puts "-"*10
-        puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
+        puts "#{@board[3].value} | #{@board[4].value} | #{@board[5].value}"
         puts "-"*10
-        puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
-      end
-      display_board
-
-
+        puts "#{@board[6].value} | #{@board[7].value} | #{@board[8].value}"
+    end
 
 end
+
+
+jeu = Board.new
+jeu.board[4].change_value("X")
+system("clear")
+jeu.display_board
