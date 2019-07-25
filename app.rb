@@ -6,14 +6,16 @@ require 'board.rb'
 require 'game.rb'
 require 'player.rb'
 
+def perform
+    game = Game.new
+    current_player = game.player_o
 
-game = Game.new
-current_player = game.player_x
-
-while game.is_game_still_going? == true
-    game.player_choice(current_player)
-    game.game_board.display_board
-    current_player = game.switch_player(current_player)
+    while game.is_game_still_going?(current_player) == true
+        current_player = game.switch_player(current_player)
+        game.player_choice(current_player)
+        game.game_board.display_board
+        current_player.winner_combo
+    end
 end
 
- #Displays a message that says who won
+perform

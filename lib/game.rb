@@ -28,17 +28,18 @@ class Game
 	end
 
     #checks if the game is over
-    def is_game_still_going?
+    def is_game_still_going?(current_player)
 		result = true
-		result = false if @@number_of_round_played == 9
+		if @@number_of_round_played == 9
+			result = false 
+			puts "It's a tie, nobody won"
+		elsif  current_player.winner_combo == true
+			result = false
+			puts "Congratulations #{current_player.name} !! You won this game"
+		end
 
 		return result
 	end
-
-		#returns the winner of the game 
-		def is_there_winning_combination?
-			
-		end
 
 		def switch_player(player)
 			if player == @player_x
